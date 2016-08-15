@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/context
+          http://www.springframework.org/schema/context/spring-context-3.1.xsd
+          http://www.springframework.org/schema/data/mongo
+          http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd
+          http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+       
+      
+      <!-- 发送工具类，配置信息 -->
+      <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	        <property name="host" value="${mail.smtp.host}" />
+	        <property name="port" value="${mail.smtp.port}" />
+	        <property name="username" value="${mail.userName}" />
+	        <property name="password" value="${mail.password}" />
+	        <property name="javaMailProperties">
+	             <props>
+	                 <prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+	             </props>
+	        </property>
+	    </bean>
+    
+    <bean id="freemarker" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">     
+	  <property name="templateLoaderPath" value="classpath:META-INF/mail"/><!--指定模板文件目录-->       
+	  <property name="freemarkerSettings"><!-- 设置FreeMarker环境属性-->       
+	      <props>     
+	          <prop key="template_update_delay">86400</prop><!--刷新模板的周期，单位为秒-->       
+	          <prop key="default_encoding">UTF-8</prop><!--模板的编码格式 -->     
+	          <prop key="locale">zh_CN</prop><!-- 本地化设置-->     
+	      </props>     
+	  </property>     
+	</bean>   
+	  
+	 <bean id="templateEmail" class="com.youboy.locoy.jobs.utils.EmailUtils">  
+        <property name="sender" ref="mailSender"></property>  
+        <property name="freeMarkerConfigurer" ref="freemarker"></property>
+        <property name="formEmail" value="${mail.userName}"></property>
+        
+        <property name="sendList">
+        	<list>
+        		<value>1150483011@qq.com</value>
+        	</list>
+        </property>
+        
+        <property name="copyList">
+        	<list>
+        		<value>123@qq.com</value>
+        		<!-- <value>474991601@qq.com</value>
+        		<value>185064189@qq.com</value>
+        		<value>719082150@qq.com</value>
+        		<value>15914200270@139.com</value> -->
+        	</list>
+        </property>
+    </bean>   
+    
+</beans>

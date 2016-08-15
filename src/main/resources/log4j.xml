@@ -1,0 +1,8 @@
+<appender name="PROJECT" class="org.apache.log4j.FileAppender">
+    <param name="file" value="${myApp.root}/logs/mylog.log"/>
+    <param name="append" value="false"/>
+    <param name="encoding" value="utf-8"/>
+    <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%d [%t] %p - %m%n"/>
+    </layout>
+</appender>

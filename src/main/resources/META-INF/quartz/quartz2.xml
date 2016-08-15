@@ -1,0 +1,22 @@
+<quartz>
+	<jobs>
+		<job class="com.freedom.pushyb.utils.PushJob">
+			<name>job</name>
+			<group>group1</group>
+		</job>
+		<job class="com.freedom.pushyb.utils.PushJob">
+			<name>jobx</name>
+			<group>group1x</group>
+		</job>
+	</jobs>
+	
+	
+	
+	<triggers>
+		<trigger>
+			<name>trigger1</name>
+			<group>group1</group>
+			<time>100</time>
+		</trigger>
+	</triggers>
+</quartz>
