@@ -11,7 +11,6 @@
 	<properties>
 		<spring.version>4.0.0.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- <junit.version>3.8.1</junit.version> -->
 		<junit.version>4.11</junit.version>
 		<mysql.version>5.1.26</mysql.version>
 		<slf.version>1.7.5</slf.version>
@@ -402,19 +401,6 @@
 			<version>9.1-901.jdbc4</version>
 		</dependency>
 		
-		<!-- redis -->
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-			<version>2.7.2</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.lmax</groupId>
-			<artifactId>disruptor</artifactId>
-			<version>${disruptor-version}</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>
@@ -440,51 +426,42 @@
 		    <version>2.4</version>
 		</dependency>
 		
+		<dependency>
+		    <groupId>org.nanohttpd</groupId> <!-- <groupId>com.nanohttpd</groupId> for 2.1.0 and earlier -->
+		    <artifactId>nanohttpd</artifactId>
+		    <version>2.2.0</version>
+		</dependency>
+		
 		<!-- spring-boot -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot</artifactId>
-		    <version>1.3.3.RELEASE</version>
+		    <version>1.3.4.RELEASE</version>
 		</dependency>
 		
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-autoconfigure</artifactId>
-		    <version>1.3.3.RELEASE</version>
+		    <version>1.3.4.RELEASE</version>
+		</dependency>
+		
+		<!-- spring-data-redis -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>1.7.5.RELEASE</version>
+			<optional>fasle</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<optional>true</optional>
+			<version>2.7.3</version>
 		</dependency>
 		
 		<!-- end -->
 	</dependencies>
-
-	<!-- 仓库 -->
-	<repositories>
-		
-        <!--oschina-->
-		<repository>
-			<id>central</id>
-			<name>Maven Repository Switchboard</name>
-			<layout>default</layout>
-			<url>http://maven.oschina.net/content/groups/public/</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>sonatype-snapshots</id>
-			<name>Sonatype Snapshots Repository</name>
-			<url>http://oss.sonatype.org/content/repositories/snapshots/</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-
-		<repository>
-			<id>sonatype-releases</id>
-			<name>Sonatype Releases Repository</name>
-			<url>http://oss.sonatype.org/content/repositories/releases/</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<finalName>carvendy-demo</finalName>

@@ -37,7 +37,7 @@ public class PinyinUtils {
     }
  
     public static void main(String[] args) {
-        String chstrs = "啊泽，你好";
+        String chstrs = "啊泽，你好,调试";
         System.out.println("输入:" + chstrs);
         System.out.println("结果：" + getPinYin(chstrs));
     }
